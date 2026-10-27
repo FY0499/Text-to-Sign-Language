@@ -1,5 +1,4 @@
-# Sign Language Video Generator
-
+# Text-to-Sign-Language
 A Python prototype that assembles sign-language video clips from text using a sign dictionary and MoviePy. It normalizes input text, attempts synonym and fuzzy matching, and combines available clips into a sequence.
 
 > **Naming note:** Although the repository is named `TTS`, the main class is a sign-language video generator rather than a conventional text-to-speech engine.
