@@ -1,65 +1,71 @@
 # Sign Language Video Generator
 
-A Python prototype for assembling sign-language video clips from text. The `SignLanguageVideoGenerator` class loads a sign dictionary, normalizes input, uses synonym and fuzzy matching, and combines available clips with MoviePy.
+A Python prototype that assembles sign-language video clips from text using a sign dictionary and MoviePy. It normalizes input text, attempts synonym and fuzzy matching, and combines available clips into a sequence.
 
-> Despite the repository name `TTS`, the main class in `TTS.py` is a **sign-language video generator**, not a conventional text-to-speech engine.
+> **Naming note:** Although the repository is named `TTS`, the main class is a sign-language video generator rather than a conventional text-to-speech engine.
 
-## The problem it explores
+## Problem it addresses
 
-A text-to-sign resource can help people find visual sign equivalents for supported words and phrases. This project explores building a sign-language video sequence from existing clips and a dictionary.
+People may need a visual sign-language representation of supported words or phrases. This project explores turning text into a sequence of existing sign clips, using a dictionary to connect words with video resources.
 
-## Main features
+## Features
 
 - Loads a JSON dictionary mapping text to sign resources.
 - Normalizes text and supports Arabic synonyms and approximate matching.
-- Processes and concatenates video clips using MoviePy.
-- Uses concurrent-processing utilities for some operations.
+- Combines video clips with MoviePy.
+- Includes concurrency utilities for selected operations.
 
 ## Demo
 
-A verified generated-video demo is not included yet. Once tested, add a short sample video or GIF showing a supported input phrase and the resulting clip sequence.
+A verified generated-video demo is not currently included. After testing a supported phrase, add a real GIF or short video under `assets/demo.gif` or `assets/demo.mp4` and embed it here.
 
-Suggested location: `assets/demo.gif` or `assets/demo.mp4`.
+## Technologies
+
+Python, JSON, MoviePy, SpeechRecognition, `difflib`, and `concurrent.futures`. See [requirements.txt](./requirements.txt) for dependencies.
 
 ## Repository contents
 
 - [TTS.py](./TTS.py) — main implementation.
-- [signs_dictionary.json](./signs_dictionary.json) — sign dictionary.
-- [requirements.txt](./requirements.txt) — dependencies.
+- [signs_dictionary.json](./signs_dictionary.json) — text-to-sign resource mapping.
 - [signs/](./signs/) — sign video assets.
+- [requirements.txt](./requirements.txt) — Python dependencies.
 
-## Tech stack
-
-Python · JSON · MoviePy · SpeechRecognition · difflib · concurrent.futures
-
-## Setup
-
-Use a Python version compatible with the pinned dependencies.
+## Installation
 
 ```bash
+git clone https://github.com/FY0499/TTS.git
+cd TTS
 python -m venv .venv
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-# source .venv/bin/activate
+```
 
+Windows:
+```powershell
+.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-## Run
+macOS/Linux:
+```bash
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-`python TTS.py` currently loads the class definition but does not provide a complete command-line workflow. To run it, create a small script that imports `SignLanguageVideoGenerator`, initializes it with the path to `signs_dictionary.json`, and calls the appropriate public method for a phrase. Check the class methods in [TTS.py](./TTS.py) and make sure the dictionary's referenced video files are present before testing.
+## Usage status
+
+The current `TTS.py` file defines the generator class but does not provide a complete command-line workflow. Therefore, `python TTS.py` is not a complete end-user demo.
+
+To use the class, inspect its public methods in [TTS.py](./TTS.py), initialize it with the path to `signs_dictionary.json`, and call the relevant method for a phrase. Verify that every referenced video file exists before testing. A standalone example script should be added and tested before the project is presented as directly runnable.
 
 ## Limitations and licensing
 
-- Output depends on the available sign clips and dictionary coverage; missing signs may prevent a phrase from being represented.
-- Review timing and continuity of generated clips.
-- Only publish sign videos you have permission to redistribute.
+- Output depends on dictionary coverage and the sign clips available.
+- Clip timing and continuity should be reviewed.
+- Only publish sign-language videos you have permission to redistribute.
 
-## Roadmap
+## Future improvements
 
-- [ ] Add a minimal tested example script with a sample phrase.
-- [ ] Include a short real output video/GIF.
-- [ ] Document the dictionary schema and how to add a sign clip.
-- [ ] Add tests for normalization, synonyms, and missing-sign behavior.
-- [ ] Review dependency compatibility and document a supported Python version.
+- Add a minimal tested example script.
+- Include a real output video/GIF.
+- Document the dictionary schema and how to add clips.
+- Add tests for normalization, synonyms, and missing signs.
+- Document a supported Python version and dependency compatibility.
