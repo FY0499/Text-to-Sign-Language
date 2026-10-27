@@ -4,6 +4,12 @@ A Python prototype that assembles sign-language video clips from text using a si
 
 > **Naming note:** Although the repository is named `TTS`, the main class is a sign-language video generator rather than a conventional text-to-speech engine.
 
+
+
+https://github.com/user-attachments/assets/e6997df8-568c-45ae-96d3-a3386a53d779
+
+
+
 ## Problem it addresses
 
 People may need a visual sign-language representation of supported words or phrases. This project explores turning text into a sequence of existing sign clips, using a dictionary to connect words with video resources.
