@@ -1,76 +1,42 @@
 # Text-to-Sign-Language
-A Python prototype that assembles sign-language video clips from text using a sign dictionary and MoviePy. It normalizes input text, attempts synonym and fuzzy matching, and combines available clips into a sequence.
 
-> **Naming note:** Although the repository is named `TTS`, the main class is a sign-language video generator rather than a conventional text-to-speech engine.
+A system that helps people who communicate through sign language understand spoken or written messages. It accepts **typed text or audio**. When the input is audio, it first converts speech into text, then finds the matching signs and combines their video clips into one sign-language video.
 
+## How it works
 
-
-https://github.com/user-attachments/assets/e6997df8-568c-45ae-96d3-a3386a53d779
-
-
-
-## Problem it addresses
-
-People may need a visual sign-language representation of supported words or phrases. This project explores turning text into a sequence of existing sign clips, using a dictionary to connect words with video resources.
-
-## Features
-
-- Loads a JSON dictionary mapping text to sign resources.
-- Normalizes text and supports Arabic synonyms and approximate matching.
-- Combines video clips with MoviePy.
-- Includes concurrency utilities for selected operations.
+1. The user enters text or sends an audio recording.
+2. Audio is converted into written text.
+3. The system matches the words with entries in the sign dictionary, including supported synonyms.
+4. The matching sign clips are combined into a video.
 
 ## Demo
 
-A verified generated-video demo is not currently included. After testing a supported phrase, add a real GIF or short video under `assets/demo.gif` or `assets/demo.mp4` and embed it here.
+https://github.com/user-attachments/assets/e6997df8-568c-45ae-96d3-a3386a53d779
+
+## Features
+
+- Accepts written text and audio input.
+- Converts speech to text.
+- Matches Arabic words and phrases using a sign dictionary, synonyms, and fuzzy matching.
+- Combines the selected sign clips into a video.
+- Can be connected to the Flutter app flow.
 
 ## Technologies
 
-Python, JSON, MoviePy, SpeechRecognition, `difflib`, and `concurrent.futures`. See [requirements.txt](./requirements.txt) for dependencies.
+Python, MoviePy, SpeechRecognition, JSON, difflib, and concurrent.futures.
 
-## Repository contents
-
-- [TTS.py](./TTS.py) — main implementation.
-- [signs_dictionary.json](./signs_dictionary.json) — text-to-sign resource mapping.
-- [signs/](./signs/) — sign video assets.
-- [requirements.txt](./requirements.txt) — Python dependencies.
-
-## Installation
+## Setup
 
 ```bash
-git clone https://github.com/FY0499/TTS.git
-cd TTS
+git clone https://github.com/FY0499/Text-to-Sign-Language.git
+cd Text-to-Sign-Language
 python -m venv .venv
 ```
 
-Windows:
-```powershell
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
+Install the project dependencies:
 
-macOS/Linux:
 ```bash
-source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Usage status
-
-The current `TTS.py` file defines the generator class but does not provide a complete command-line workflow. Therefore, `python TTS.py` is not a complete end-user demo.
-
-To use the class, inspect its public methods in [TTS.py](./TTS.py), initialize it with the path to `signs_dictionary.json`, and call the relevant method for a phrase. Verify that every referenced video file exists before testing. A standalone example script should be added and tested before the project is presented as directly runnable.
-
-## Limitations and licensing
-
-- Output depends on dictionary coverage and the sign clips available.
-- Clip timing and continuity should be reviewed.
-- Only publish sign-language videos you have permission to redistribute.
-
-## Future improvements
-
-- Add a minimal tested example script.
-- Include a real output video/GIF.
-- Document the dictionary schema and how to add clips.
-- Add tests for normalization, synonyms, and missing signs.
-- Document a supported Python version and dependency compatibility.
+The main implementation is in [TTS.py](./TTS.py), and the sign video mapping is stored in [signs_dictionary.json](./signs_dictionary.json).
